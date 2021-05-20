@@ -1,7 +1,7 @@
 <?php
 	include("includes/classes/Account.php");
 	include("includes/classes/Constants.php");
-	
+
 	$account = new Account();
 
 	include("includes/handlers/register-handler.php");
@@ -43,7 +43,7 @@
 			<p>
 				<?php echo $account->getError(Constants::$usernameCharacters); ?>
 				<label for="username">Username</label>
-				<input id="username" name="username" type="text" placeholder="e.g. bartSimpson"  value="<?php getInputValue('username') ?>" required>
+				<input id="username" name="username" type="text" placeholder="e.g. bartSimpson" value="<?php getInputValue('username') ?>" required>
 			</p>
 
 			<p>
