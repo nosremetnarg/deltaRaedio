@@ -55,7 +55,7 @@
 					<p>
 					<?php echo $account->getError(Constants::$loginFailed); ?>
 						<label for="loginUsername">Username</label>
-						<input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. bartSimpson" required>
+						<input id="loginUsername" name="loginUsername" type="text" value="<?php getInputValue('loginUsername')?>"placeholder="e.g. bartSimpson" required>
 					</p>
 					<p>
 						<label for="loginPassword">Password</label>
@@ -130,7 +130,7 @@
 			<h2>Listen to unreleased songs, demos, and more...</h2>
 			<ul>
 				<li>
-				Discover music from the very beginning of Delta Rae
+				Discover music from the very beginning of Delta Rae to now
 				</li>
 				<li>
 				Create your own playlists
