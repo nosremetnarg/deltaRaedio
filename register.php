@@ -19,12 +19,37 @@
 <head>
 	<title>Welcome to Slotify!</title>
 	<link rel="stylesheet" type="text/css" href="Assets/css/register.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="Assets/js/register.js"></script>
 </head>
 <body>
+<?php
+	if(isset($_POST['registerButton'])) {
+		echo '<script>
+		$(document).ready(function(){	
+
+				$("#loginForm").hide();
+				$("#registerForm").show();
+		});
+	</script> ';
+	}
+	else {
+		echo '<script>
+		$(document).ready(function(){	
+
+				$("#loginForm").show();
+				$("#registerForm").hide();
+		});
+	</script> ';
+	}
+?>
+		
 	<div id="background">
 
 		<div id='loginContainer'>
 			<div id="inputContainer">
+
 				<form id="loginForm" action="register.php" method="POST">
 					<h2>Login to your account</h2>
 					<p>
@@ -38,7 +63,9 @@
 					</p>
 
 					<button type="submit" name="loginButton">LOG IN</button>
-					
+					<div class="hasAccountText">
+						<span id="hideLogin">Don't have an account yet? Signup here.</span>
+					</div>
 				</form>
 
 
@@ -91,10 +118,27 @@
 					</p>
 
 					<button type="submit" name="registerButton">SIGN UP</button>
-					
+					<div class="hasAccountText">
+						<span id="hideRegister">Already have an account? Login here.</span>
+					</div>
 				</form>
 
 
+			</div>
+			<div id="loginText">
+			<h1>Delta Raedio</h1>
+			<h2>Listen to unreleased songs, demos, and more...</h2>
+			<ul>
+				<li>
+				Discover music from the very beginning of Delta Rae
+				</li>
+				<li>
+				Create your own playlists
+				</li>
+				<li>
+				Follow Delta Rae to get updates when new songs are added
+				</li>
+			</ul>
 			</div>
 		</div>
 	</div>
