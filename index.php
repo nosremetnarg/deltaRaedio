@@ -12,10 +12,17 @@ else {
 
 <!DOCTYPE html>
 <head>
-   
     <title>Delta Raedio</title>
+    <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+    
 </head>
 <body>
-    Hello
+    
+    <div id="nowPlayingBarContainer">
+        <div id="nowPlayingBar">
+        
+        </div>
+    </div>
+
 </body>
 </html>
