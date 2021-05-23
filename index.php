@@ -20,7 +20,28 @@ else {
     
     <div id="nowPlayingBarContainer">
         <div id="nowPlayingBar">
-            <div id="nowPlayingLeft"></div>
+
+            <div id="nowPlayingLeft">
+
+                <div class="content">
+                    <span class="albumLink">
+                        <img src="https://cdn-skill.splashmath.com/panel-uploads/GlossaryTerm/da5a861feb0e4bee9ca440a8751bca03/1547802408_square-shape.png" class="albumArtwork">
+                    </span>
+
+                    <div class="trackInfo">
+                        <span class="trackName">
+                            <span>Happy Birthday</span>
+                        </span>
+                        <span class="artistName">
+                            <span>Grant Emerson</span>
+                        </span>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
             <div id="nowPlayingCenter">
                 <div class="content playerControls">
 
@@ -60,7 +81,7 @@ else {
 
                             <div class="progressBarBg">
                                 <div class="progress">
-                                
+
                                 </div>
                             </div>
 
@@ -71,7 +92,21 @@ else {
                     </div>
                 </div>
             </div>
-            <div id="nowPlayingRight"></div>
+            <div id="nowPlayingRight">
+                <div class="volumeBar">
+                    <button class="controlButton volume" title="Volume Button">
+                        <img src="Assets/images/icons/volume.png" alt="Volume">
+                    </button>
+                    
+                    <div class="progressBar">
+                        <div class="progressBarBg">
+                            <div class="progress">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
