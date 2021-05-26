@@ -1,37 +1,24 @@
-<?php 
-include("includes/config.php");
 
-if(isset($_SESSION['userLoggedIn'])) {
-    $userLoggedIn = $_SESSION['userLoggedIn'];
-}
-else {
-    header("Location: register.php");
-}
-?>
+<?php include('includes/header.php'); ?>
 
-<!DOCTYPE html>
-<head>
-    <title>Delta Raedio</title>
-    <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
-    
-</head>
-<body>
-    <div id="mainContainer">
-    
-        <div id="topContainer">
+    <h1 class="pageHeadingBig">
+        You Might Also Like
+    </h1>
 
-             <?php include('includes/navBarContainer.php')?>
-        
-            <div id="mainViewContainer">
-            <div id="mainContent">
-                </div>
-            </div>
-        </div>
-        
-        <?php include('includes/nowPlayingBarContainer.php')?>
+    <div class="gridViewContainer">
+
+        <?php
+            $albumQuery = mysqli_query($con, "SELECT * FROM albums ORDER BY RAND() LIMIT 10");
+            
+            while($row = mysqli_fetch_array($albumQuery)) {
+                    
+                echo "<div class='gridViewItem'>
+                            <img src='" . $row['artworkPath'] . "'>
+                        </div>";
+            }
+        ?>
 
     </div>
-    
 
-</body>
-</html>
+<?php include('includes/footer.php'); ?>
+
