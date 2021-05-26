@@ -7,6 +7,7 @@ html, body {
 * {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #fff;
+    letter-spacing: 1px;
 }
 body {
     background-color: #181818;
@@ -243,4 +244,8 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.gridViewItem a {
+    text-decoration: none;
 }
