@@ -229,8 +229,18 @@ body {
     width: 29%;
     max-width: 200px;
     min-width: 150px;
+    margin-bottom: 20px;
 }
 
 .gridViewItem img {
     width: 100%;
+}
+
+.gridViewInfo {
+    text-align: center;
+    font-weight: 300;
+    padding: 5px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
