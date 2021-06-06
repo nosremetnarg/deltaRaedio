@@ -6,7 +6,8 @@
 		private $title;
 		private $artistId;
 		private $genre;
-		private $artworkPath;
+        private $artworkPath;
+        // private $year;
 
 		public function __construct($con, $id) {
 			$this->con = $con;
@@ -18,7 +19,8 @@
 			$this->title = $album['title'];
 			$this->artistId = $album['artist'];
 			$this->genre = $album['genre'];
-			$this->artworkPath = $album['artworkPath'];
+            $this->artworkPath = $album['artworkPath'];
+          //  $this->year = $album['year'];
 
 
 		}
@@ -37,7 +39,13 @@
 
 		public function getArtworkPath() {
 			return $this->artworkPath;
-		}
+        }
+
+        /* 
+        public function getYear() {
+			return $this->artworkPath;
+        }
+        */
 
 		public function getNumberOfSongs() {
 			$query = mysqli_query($this->con, "SELECT id FROM songs WHERE album='$this->id'");
