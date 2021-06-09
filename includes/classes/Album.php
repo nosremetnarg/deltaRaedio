@@ -48,7 +48,8 @@
         */
 
 		public function getNumberOfSongs() {
-			$query = mysqli_query($this->con, "SELECT id FROM songs WHERE album='$this->id'");
+            $query = mysqli_query($this->con, "SELECT id FROM songs WHERE album='$this->id'");
+            
 			return mysqli_num_rows($query);
         }
         
