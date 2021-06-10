@@ -1,3 +1,48 @@
+
+<?php
+    $songQuery = mysqli_query($con, "SELECT * FROM Songs ORDER BY RAND() LIMIT 10");
+    $resultArray = array();
+
+    while($row = mysqli_fetch_array($songQuery)) {
+        array_push($resultArray, $row['id']);
+
+    }
+
+    $jsonArray = json_encode($resultArray);
+
+?>
+
+<script>
+    
+
+    $(document).ready(function() {
+        currentPlaylist = <?php echo $jsonArray; ?>;
+        audioElement = new Audio();
+        // document.querySelector("body").addEventListener("click", setTrack);
+        setTrack(currentPlaylist[0], currentPlaylist, false);
+        
+    });
+
+    
+    function setTrack(trackId, newPlaylist, play) {
+        audioElement.setTrack('Assets/music/badlandsBoardMix.mp3');
+
+        if(play) {
+            audioElement.play();
+        }
+
+        
+}
+
+
+// document.querySelector("body").addEventListener("click", setTrack);
+
+
+
+</script>
+
+
+
 <div id="nowPlayingBarContainer">
     <div id="nowPlayingBar">
 
