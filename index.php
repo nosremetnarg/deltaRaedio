@@ -1,27 +1,33 @@
 
-<?php include('includes/header.php'); ?>
 
-    <h1 class="pageHeadingBig">
-        You Might Also Like
-    </h1>
+<?php 
 
-    <div class="gridViewContainer">
+   include('includes/header.php'); ?>
 
-        <?php
-            $albumQuery = mysqli_query($con, "SELECT * FROM albums LIMIT 10");
-            
-            while($row = mysqli_fetch_array($albumQuery)) {
-                    
-                echo "<div class='gridViewItem'>
-                            <a href='album.php?id=" . $row['id'] . "'>
-                            <img src='" . $row['artworkPath'] . "'>
-                            <div class='gridViewInfo'> " . $row['title'] . "</div>
-                            </a>
-                        </div>";
-            }
-        ?>
+<h1 class="pageHeadingBig">
+    You Might Also Like
+</h1>
 
-    </div>
+<div class="gridViewContainer">
 
-<?php include('includes/footer.php'); ?>
+    <?php
+        $albumQuery = mysqli_query($con, "SELECT * FROM albums LIMIT 10");
+        
+        while($row = mysqli_fetch_array($albumQuery)) {
+                
+            echo "<div class='gridViewItem'>
+                        <a href='album.php?id=" . $row['id'] . "'>
+                        <img src='" . $row['artworkPath'] . "'>
+                        <div class='gridViewInfo'> " . $row['title'] . "</div>
+                        </a>
+                    </div>";
+        }
+    ?>
 
+</div>
+
+<?php include('includes/footer.php'); 
+
+
+
+?>
