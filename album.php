@@ -20,9 +20,8 @@ $artist = $album->getArtist();
 	<div class="rightSection">
 		<h2><?php echo $album->getTitle(); ?></h2>
 		<p><?php echo $artist->getName(); ?></p>
-        <p><?php echo $artist->getNumberOfSongs(); ?></p>
-        
-
+        <p><?php echo $album->getNumberOfSongs(); ?> Songs</p>
+		
 	</div>
 
 </div>
