@@ -9,12 +9,10 @@
     }
 
     $jsonArray = json_encode($resultArray);
-
 ?>
 
 <script>
     
-
     $(document).ready(function() {
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
@@ -23,10 +21,27 @@
         
     });
 
-    
     function setTrack(trackId, newPlaylist, play) {
-        audioElement.setTrack('Assets/music/badlandsBoardMix.mp3');
 
+        $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data){
+
+            let track = JSON.parse(data);
+            $(".trackName span").text(track.title);
+
+            $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data){
+                let artist = JSON.parse(data);
+                $(".artistName span").text(artist.name);
+                
+            });
+
+            $.post("includes/handlers/ajax/getArtworkJson.php", { albumId: track.album }, function(data){
+                let album = JSON.parse(data);
+                $(".albumLink img").attr("src", album.artworkPath);
+                
+            });
+            audioElement.setTrack(track.path);
+            audioElement.play();
+        } )
         if(play) {
             audioElement.play();
         }
@@ -59,15 +74,15 @@
 
             <div class="content">
                 <span class="albumLink">
-                    <img src="https://cdn-skill.splashmath.com/panel-uploads/GlossaryTerm/da5a861feb0e4bee9ca440a8751bca03/1547802408_square-shape.png" class="albumArtwork">
+                    <img src="" class="albumArtwork">
                 </span>
 
                 <div class="trackInfo">
                     <span class="trackName">
-                        <span>Happy Birthday</span>
+                        <span></span>
                     </span>
                     <span class="artistName">
-                        <span>Grant Emerson</span>
+                        <span></span>
                     </span>
                     
                 </div>
