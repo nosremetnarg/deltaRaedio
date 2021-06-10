@@ -18,7 +18,7 @@
     $(document).ready(function() {
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
-        // document.querySelector("body").addEventListener("click", setTrack);
+       // document.querySelector("body").addEventListener("click", setTrack);
         setTrack(currentPlaylist[0], currentPlaylist, false);
         
     });
@@ -30,9 +30,18 @@
         if(play) {
             audioElement.play();
         }
-
-        
 }
+    function playSong() {
+        $('.controlButton.play').hide();
+        $('.controlButton.pause').show();
+        audioElement.play();
+
+    }
+    function pauseSong() {
+        $('.controlButton.play').show();
+        $('.controlButton.pause').hide();
+        audioElement.pause();
+    }
 
 
 // document.querySelector("body").addEventListener("click", setTrack);
@@ -80,11 +89,11 @@
                     <img src="Assets/images/icons/previous.png" alt="Previous">
                     </button>
 
-                    <button class="controlButton play" title="Play Button">
+                    <button class="controlButton play" title="Play Button" onclick="playSong()">
                     <img src="Assets/images/icons/play.png" alt="Play">
                     </button>
 
-                    <button class="controlButton pause" title="Pause Button" style="display: none;">
+                    <button class="controlButton pause" title="Pause Button" style="display: none;" onclick="pauseSong()">
                     <img src="Assets/images/icons/pause.png" alt="Pause">
                     </button>
 
