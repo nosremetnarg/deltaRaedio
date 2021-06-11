@@ -5,7 +5,6 @@
 
     while($row = mysqli_fetch_array($songQuery)) {
         array_push($resultArray, $row['id']);
-
     }
 
     $jsonArray = json_encode($resultArray);
@@ -16,9 +15,12 @@
     $(document).ready(function() {
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
-       // document.querySelector("body").addEventListener("click", setTrack);
         setTrack(currentPlaylist[0], currentPlaylist, false);
         updateVolumeProgressBar(audioElement.audio);
+
+        $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
+            e.preventDefault();
+        })
 
         $('.playbackBar .progressBar').mousedown(function() {
             mouseDown = true;
@@ -68,17 +70,41 @@
 
     }
 
+    function nextSong() {
+        if(repeat == true) {
+            audioElement.setTime(0);
+            playSong();
+            return;
+        }
+        if(currentIndex == currentPlaylist.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        let trackToPlay = currentPlaylist[currentIndex];
+        setTrack(trackToPlay, currentPlaylist, true);
+    }
+
+    function setRepeat() {
+        repeat = !repeat;
+        let imageName = repeat ? 'repeat-active.png' : 'repeat.png';
+        $('.controlButton.repeat img').attr('src', 'Assets/images/icons/' + imageName);
+    }
+
     function setTrack(trackId, newPlaylist, play) {
+
+        currentIndex = currentPlaylist.indexOf(trackId);
+        pauseSong();
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data){
 
+            
             let track = JSON.parse(data);
             $(".trackName span").text(track.title);
 
             $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data){
                 let artist = JSON.parse(data);
-                $(".artistName span").text(artist.name);
-                
+                $(".artistName span").text(artist.name);   
             });
 
             $.post("includes/handlers/ajax/getArtworkJson.php", { albumId: track.album }, function(data){
@@ -167,11 +193,11 @@
                     <img src="Assets/images/icons/pause.png" alt="Pause">
                     </button>
 
-                    <button class="controlButton next" title="Next Button">
+                    <button class="controlButton next" title="Next Button" onclick="nextSong()">
                     <img src="Assets/images/icons/next.png" alt="Next">
                     </button>
 
-                    <button class="controlButton repeat" title="Repeat Button">
+                    <button class="controlButton repeat" title="Repeat Button" onclick="setRepeat()" >
                     <img src="Assets/images/icons/repeat.png" alt="Repeat">
                     </button>
 
