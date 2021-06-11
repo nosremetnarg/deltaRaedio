@@ -4,7 +4,9 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-   include('includes/header.php'); ?>
+   
+   include('includes/includedFiles.php'); 
+   ?>
 
 <h1 class="pageHeadingBig">
     You Might Also Like
@@ -28,8 +30,3 @@ error_reporting(E_ALL);
 
 </div>
 
-<?php include('includes/footer.php'); 
-
-
-
-?>

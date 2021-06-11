@@ -3,9 +3,9 @@
 
 <div id="navBarContainer">
     <nav class="navBar"> 
-        <a href="index.php" class="logo">
+        <span class="logo" onclick="openPage('index.php')">
             <img src="Assets/images/icons/radio.png">
-        </a>
+        </span>
 
         <div class="group">
             <div class="navItem">
