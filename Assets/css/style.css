@@ -376,3 +376,12 @@ body {
     background-color: #2ebd59;
     border: #2ebd59;
 }
+
+.borderBottom { 
+    border-bottom: 1px solid #939393;
+    margin-bottom: 20px;
+}
+
+.trackListContainer h2, .gridViewContainer h2 {
+    text-align: center;
+}
