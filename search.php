@@ -22,7 +22,7 @@ if(isset($_GET['term'])) {
 
 $(function() {
     
-    let timer;
+    
     $(".searchInput").keyup(function () {
         clearTimeout(timer);
 
@@ -46,7 +46,7 @@ $(function() {
 	<ul class="tracklist">
 		<?php
 
-        $songsQuery = mysqli_query($con, "SELECT id FROM Songs WHERE title LIKE '$term%' LIMIT 10");
+        $songsQuery = mysqli_query($con, "SELECT id FROM Songs WHERE title LIKE '%$term%' LIMIT 10");
             if(mysqli_num_rows($songsQuery) == 0) {
                 echo "<span class='noResults'>No Songs Found " . $term . "</span>";
             }

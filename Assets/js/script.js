@@ -8,9 +8,14 @@ let currentIndex = 0;
 let repeat = false;
 let shuffle = false;
 let userLoggedIn;
+let timer;
 
 function openPage(url) {
 
+    if (timer != null) {
+        clearTimeout(timer);
+    }
+    
     if(url.indexOf("?") == -1 ) {
         url = url + "?";
     }
