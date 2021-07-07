@@ -1,4 +1,3 @@
-
 let currentPlaylist = [];
 let shufflePlaylist = [];
 let tempPlaylist = [];
@@ -15,14 +14,36 @@ function openPage(url) {
     if (timer != null) {
         clearTimeout(timer);
     }
-    
+
     if(url.indexOf("?") == -1 ) {
         url = url + "?";
     }
     let encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+    console.log(encodedUrl)
     $("#mainContent").load(encodedUrl);
     $("body").scrollTop(0);
     history.pushState(null, null, url);
+}
+
+function createPlaylist() {
+    let popup = prompt('Please enter the name of your playlist');
+
+    if(popup != null) {
+        
+        $.post("includes/handlers/ajax/createPlaylist.php", { name: popup, username: userLoggedIn } )
+        .done(function(error) {
+            
+            if (error != "") {
+                alert(error);
+                return;
+            }
+            // do something when AJAX returns
+
+            openPage("yourMusic.php");
+
+        });
+
+    }
 }
 
 function formatTime(seconds) {
