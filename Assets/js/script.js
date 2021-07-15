@@ -8,6 +8,7 @@ let repeat = false;
 let shuffle = false;
 let userLoggedIn;
 let timer;
+let username; 
 
 function openPage(url) {
 
