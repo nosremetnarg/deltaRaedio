@@ -1,12 +1,14 @@
-        </div>
-
-        </div>
-        </div>
-
-        <?php include('includes/nowPlayingBarContainer.php')?>
-
-        </div>
+</div>
 
 
-    </body>
+</div>
+
+</div>
+
+<?php include("includes/nowPlayingBarContainer.php"); ?>
+
+</div>
+
+</body>
+
 </html>

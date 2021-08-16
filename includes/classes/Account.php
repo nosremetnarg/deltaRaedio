@@ -7,20 +7,23 @@
 		public function __construct($con) {
 			$this->con = $con;
 			$this->errorArray = array();
-        }
-        
-        public function login($un, $pw) {
+		}
 
-            $pw = md5($pw);
-            $query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$un' AND password='$pw'");
-            if(mysqli_num_rows($query) == 1) {
-                return true;
-            }
-            else {
-                array_push($this->errorArray, Constants::$loginFailed);
-                return false;
-            }
-        }
+		public function login($un, $pw) {
+
+			$pw = md5($pw);
+
+			$query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$un' AND password='$pw'");
+
+			if(mysqli_num_rows($query) == 1) {
+				return true;
+			}
+			else {
+				array_push($this->errorArray, Constants::$loginFailed);
+				return false;
+			}
+
+		}
 
 		public function register($un, $fn, $ln, $em, $em2, $pw, $pw2) {
 			$this->validateUsername($un);
@@ -48,12 +51,10 @@
 
 		private function insertUserDetails($un, $fn, $ln, $em, $pw) {
 			$encryptedPw = md5($pw);
-			$profilePic = "assets/images/profile-pics/head_emerald.png";
+			$profilePic = "Assets/images/profile-pics/head_emerald.png";
 			$date = date("Y-m-d");
 
-/* Make sure first variable is NULL or '' */
-
-			$result = mysqli_query($this->con, "INSERT INTO users VALUES ( NULL, '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
+			$result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
 
 			return $result;
 		}
