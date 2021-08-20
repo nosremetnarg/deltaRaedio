@@ -179,7 +179,6 @@ function setTrack(trackId, newPlaylist, play) {
 			$(".albumLink img").attr("src", album.artworkPath);
 		});
 
-
 		audioElement.setTrack(track);
 	});
 
