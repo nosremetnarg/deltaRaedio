@@ -1,15 +1,16 @@
 <div id="navBarContainer">
 	<nav class="navBar">
 
-		<span class="logo" onclick="openPage('index.php')">
-			<img src="Assets/images/icons/radio.png">
-		</span>
+		<span onclick="openPage('index.php')" class="logo">
+			<img src="assets/images/icons/logo.png">
+</span>
+
 
 		<div class="group">
 
 			<div class="navItem">
 				<a href="search.php" class="navItemLink">Search
-					<img src="Assets/images/icons/search.png" class="icon" alt="Search">
+					<img src="assets/images/icons/search.png" class="icon" alt="Search">
 				</a>
 			</div>
 

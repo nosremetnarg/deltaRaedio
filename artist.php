@@ -44,7 +44,7 @@ $artist = new Artist($con, $artistId);
 
 				echo "<li class='tracklistRow'>
 					<div class='trackCount'>
-						<img class='play' src='Assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
+						<img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
 						<span class='trackNumber'>$i</span>
 					</div>
 
@@ -55,7 +55,7 @@ $artist = new Artist($con, $artistId);
 					</div>
 
 					<div class='trackOptions'>
-						<img class='optionsButton' src='Assets/images/icons/more.png'>					
+						<img class='optionsButton' src='assets/images/icons/more.png'>					
 					</div>
 
 					<div class='trackDuration'>
