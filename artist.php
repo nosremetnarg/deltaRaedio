@@ -59,7 +59,7 @@ $artist = new Artist($con, $artistId);
 					</div>
 
 					<div class='trackDuration'>
-						<span class='duration'>" .$albumSong->getDuration() . "</span>
+						<span class='duration'>" . $albumSong->getDuration() . "</span>
 					</div>
 
 				</li>";

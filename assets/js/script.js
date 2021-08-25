@@ -9,16 +9,22 @@ var shuffle = false;
 var userLoggedIn;
 
 function openPage(url) {
-    
-    if(url.indexOf('?') == -1 ) {
-        url = url + '?';
-    }
 
-    let encodedUrl = encodeURI(url + '&userLoggedIn=' + userLoggedIn);
+	if(url.indexOf("?") == -1) {
+		url = url + "?";
+	}
+
+	var encodedUrl = encodeURI(url + "&userLoggedIn=" + userLoggedIn);
+	console.log(encodedUrl);
 	$("#mainContent").load(encodedUrl);
 	$("body").scrollTop(0);
 	history.pushState(null, null, url);
 }
+
+function playFirstSong() {
+	setTrack(tempPlaylist[0], tempPlaylist, true);
+}
+
 function formatTime(seconds) {
 	var time = Math.round(seconds);
 	var minutes = Math.floor(time / 60); //Rounds down
@@ -38,7 +44,7 @@ function updateTimeProgressBar(audio) {
 }
 
 function updateVolumeProgressBar(audio) {
-	var volume = audio.volume * 100;
+	var volume = audio.volume * 50;
 	$(".volumeBar .progress").css("width", volume + "%");
 }
 
