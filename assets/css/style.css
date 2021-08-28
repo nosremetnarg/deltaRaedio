@@ -408,6 +408,8 @@ body {
     font-size: 62px;
     letter-spacing: 2px;
 }
+
+/* the thoughtful about accessibility */
 input:focus {
     outline: none;
 }

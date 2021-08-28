@@ -20,8 +20,10 @@ if(isset($_GET['term'])) {
 
 <script>
 
+    $(".searchInput"),focus();
+
 $(function() {
-    
+    let timer;
     
     $(".searchInput").keyup(function () {
         clearTimeout(timer);
@@ -44,11 +46,12 @@ $(function() {
 <div class="tracklistContainer borderBottom">
 <h2>TOP SONGS</h2>
 	<ul class="tracklist">
-		<?php
+        <?php
+        
+            $songsQuery = mysqli_query($con, "SELECT id FROM songs WHERE title LIKE '$term%' LIMIT 10");
 
-        $songsQuery = mysqli_query($con, "SELECT id FROM Songs WHERE title LIKE '%$term%' LIMIT 10");
             if(mysqli_num_rows($songsQuery) == 0) {
-                echo "<span class='noResults'>No Songs Found " . $term . "</span>";
+                echo "<span class='noResults'>No songs found matching " . $term . "</span>";
             }
 
 			$songIdArray = array();
@@ -58,7 +61,7 @@ $(function() {
                 if($i > 15) {
                 break;
                 }
-
+                
                 array_push($songIdArray, $row['id']);
 
 				$albumSong = new Song($con, $row['id']);
@@ -81,7 +84,7 @@ $(function() {
 					</div>
 
 					<div class='trackDuration'>
-						<span class='duration'>" .$albumSong->getDuration() . "</span>
+						<span class='duration'>" . $albumSong->getDuration() . "</span>
 					</div>
 
 				</li>";
