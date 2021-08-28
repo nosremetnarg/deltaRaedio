@@ -409,7 +409,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* the thoughtful about accessibility */
+/* be thoughtful about accessibility */
 input:focus {
     outline: none;
 }
