@@ -31,7 +31,30 @@ function createPlaylist() {
 	if(popup != null) {
 		
 		$.post("includes/handlers/ajax/createPlaylist.php", { name: popup, username: userLoggedIn })
-		.done(function() {
+		.done(function(error) {
+			// do something when ajax returns
+
+			if(error != "") {
+				alert(error);
+				return
+			}
+
+			openPage("yourMusic.php");
+		})
+	}
+}
+
+function deletePlaylist(playlistId) {
+	let prompt = confirm('Are you sure you want to delete this playlist?');
+
+	if(prompt) {
+		$.post("includes/handlers/ajax/deletePlaylist.php", { playlistId: playlistId })
+		.done(function(error) {
+
+			if(error != "") {
+				alert(error);
+				return
+			}
 			// do something when ajax returns
 			openPage("yourMusic.php");
 		})
