@@ -23,7 +23,7 @@ if(isset($_GET['term'])) {
     $(".searchInput"),focus();
 
 $(function() {
-    let timer;
+   
     
     $(".searchInput").keyup(function () {
         clearTimeout(timer);
@@ -40,12 +40,11 @@ $(function() {
 
 <?php
     if($term == "") exit();
-
 ?>
 
 <div class="tracklistContainer borderBottom">
-<h2>TOP SONGS</h2>
-	<ul class="tracklist">
+    <h2>TOP SONGS</h2>
+    <ul class="tracklist">
         <?php
         
             $songsQuery = mysqli_query($con, "SELECT id FROM songs WHERE title LIKE '$term%' LIMIT 10");
@@ -54,9 +53,9 @@ $(function() {
                 echo "<span class='noResults'>No songs found matching " . $term . "</span>";
             }
 
-			$songIdArray = array();
-			$i = 1;
-			while($row = mysqli_fetch_array($songsQuery)) {
+            $songIdArray = array();
+            $i = 1;
+            while($row = mysqli_fetch_array($songsQuery)) {
                 
                 if($i > 15) {
                 break;
@@ -64,42 +63,42 @@ $(function() {
                 
                 array_push($songIdArray, $row['id']);
 
-				$albumSong = new Song($con, $row['id']);
-				$albumArtist = $albumSong->getArtist();
+                $albumSong = new Song($con, $row['id']);
+                $albumArtist = $albumSong->getArtist();
 
-				echo "<li class='tracklistRow'>
-					<div class='trackCount'>
-						<img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
-						<span class='trackNumber'>$i</span>
-					</div>
+                echo "<li class='tracklistRow'>
+                    <div class='trackCount'>
+                        <img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
+                        <span class='trackNumber'>$i</span>
+                    </div>
 
-					<div class='trackInfo'>
-						<span class='trackName'>" .$albumSong->getTitle() . "</span>
-						<span class='artistName'> " . $albumArtist->getName() . "</span>
+                    <div class='trackInfo'>
+                        <span class='trackName'>" .$albumSong->getTitle() . "</span>
+                        <span class='artistName'> " . $albumArtist->getName() . "</span>
 
-					</div>
+                    </div>
 
-					<div class='trackOptions'>
-						<img class='optionsButton' src='assets/images/icons/more.png'>					
-					</div>
+                    <div class='trackOptions'>
+                        <img class='optionsButton' src='assets/images/icons/more.png'>					
+                    </div>
 
-					<div class='trackDuration'>
-						<span class='duration'>" . $albumSong->getDuration() . "</span>
-					</div>
+                    <div class='trackDuration'>
+                        <span class='duration'>" . $albumSong->getDuration() . "</span>
+                    </div>
 
-				</li>";
-				$i++;
-			}
-		?>
+                </li>";
+                $i++;
+            }
+        ?>
 
-		<script>
-			let tempSongIds = '<?php echo json_encode($songIdArray); ?>';
-			tempPlaylist = JSON.parse(tempSongIds);
+        <script>
+            let tempSongIds = '<?php echo json_encode($songIdArray); ?>';
+            tempPlaylist = JSON.parse(tempSongIds);
 
 
-		</script>
-	
-	</ul>
+        </script>
+    
+    </ul>
 </div>
 
 <div class="artistsContainer borderBottom">

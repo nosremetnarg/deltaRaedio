@@ -428,7 +428,7 @@ input:focus {
 
 .noResults { 
     margin: 15px;
-display: block; 
+    display: block; 
 }
 
 .buttonItems .button {
