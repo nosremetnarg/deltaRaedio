@@ -9,6 +9,25 @@ var shuffle = false;
 var userLoggedIn;
 let timer;
 
+$(document).click(function(click) {
+	let target = $(click.target);
+
+	if(!target.hasClass("item") && !target.hasClass("optionsButton")) {
+		hideOptionsMenu();
+	}
+})
+
+$(window).scroll(function() {
+	hideOptionsMenu();
+});
+
+$(document).on("change", "select.playlist", function() {
+	let playlistId = $(this).val();
+	let songId = $(this).prev(".songId").val();
+	console.log("playlistId: " + playlistId); 
+	console.log("songId: " + songId); 
+});
+
 function openPage(url) {
 	if (timer != null) {
 		clearTimeout(timer);
@@ -63,6 +82,30 @@ function deletePlaylist(playlistId) {
 
 function playFirstSong() {
 	setTrack(tempPlaylist[0], tempPlaylist, true);
+}
+
+function hideOptionsMenu() {
+	let menu = $(".optionsMenu");
+	if(menu.css("display") != "none") {
+		menu.css("display", "none" );
+	}
+}
+
+function showOptionsMenu(button) {
+
+	let songId = $(button).prevAll(".songId").val();
+	let menu = $(".optionsMenu");
+	let menuWidth = menu.width();
+	menu.find(".songId").val(songId);
+
+	let scrollTop = $(window).scrollTop(); // distance from top of window to top of document
+	let elementOffset = $(button).offset().top; // distance from top of document
+	let top = elementOffset - scrollTop;
+	let left = $(button).position().left;
+
+	menu.css({ "top": top + "px", "left" : left - menuWidth + "px", "display": "inline" });
+
+
 }
 
 function formatTime(seconds) {
