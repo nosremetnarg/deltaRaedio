@@ -66,8 +66,6 @@ $artist = $album->getArtist();
 		<script>
 			let tempSongIds = '<?php echo json_encode($songIdArray); ?>';
 			tempPlaylist = JSON.parse(tempSongIds);
-
-
 		</script>
 	
 	</ul>
@@ -75,5 +73,4 @@ $artist = $album->getArtist();
 <nav class="optionsMenu">
 			<input type="hidden" class="songId">
 			<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
-			<div class="item">Share Song</div>
 </nav>
